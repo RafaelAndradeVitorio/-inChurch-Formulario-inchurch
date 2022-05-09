@@ -1,0 +1,224 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background:#96E035 ;
+    font-family: "Montserrat",Sans-serif;
+}
+
+header{
+    display: flex;   
+}
+
+header>div{
+    text-align: center;
+    color: #000000;
+    background: rgb(245, 245, 245); 
+    box-shadow: 5px 5px 15px #9b9b9b; 
+    width: 100vw;
+    text-align: left;
+    padding: 5px 5px;
+}
+h1{
+    text-align: center;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 45px;
+    
+}
+p{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.logo{
+    width: 120px;
+    background: #888888;
+    padding: 8px 17px;
+    border-radius: 15px;
+}
+
+.conteudo-ilustracao{
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.ilust{
+    width: 30%;
+}
+.card-forms{
+     display: flex;
+     justify-content: center;
+     padding-top: 15px;
+     width: 50%;
+}
+
+form{
+    display: flex;
+    align-items: center;
+    width: 80%;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.etapa1, .etapa2, .etapa3{
+     display: flex;
+     flex-direction: column;
+     width: 100%;
+     background: #ffffff;
+     border-radius: 15px;
+     padding: 10px 0px;
+     align-items: center;
+     box-shadow: 5px 5px 10px #000000a8;
+     
+}
+
+.etapa1 h3, .etapa2 h3, .etapa3 h3{
+    width: 90%;
+    text-align: left;
+    margin: 5px 30px;
+    color: #292929;
+    margin-bottom: 15px;
+}
+
+.erro{
+    text-align: left;
+    width: 100%;
+    margin-left: 50px;
+    color: red;
+    font-size: 13px;
+    display: none;
+}
+
+.etapa2{
+   display: none;
+}
+
+.etapa3{
+   display: none;
+}
+
+input{
+    background: #f4f4f400;
+    border: 1px solid #cfcfcf;
+    margin: 5px 0px;
+    height: 40px;
+    width: 90%;
+    font-size: 15px;
+    padding: 2px 13px;
+    border-radius: 15px;
+   
+}
+
+.botao, .skip2, .skip3, .btn-enviar, .back1, .back2{
+    background: #f4f4f4;
+    border: none;
+    margin: 5px 30px;
+    height: 40px;
+    width: 40%;
+    font-size: 15px;
+    padding: 2px 13px;
+    border-radius: 15px;
+    transition: 500ms;
+}
+
+.skip2, .skip3, .btn-enviar{
+    background: #96E035;
+}
+
+.botoes-1step{
+    width: 100%;
+    text-align: right;
+}
+
+.botoes{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.botao:hover{
+    background: #cfcfcf;
+}
+
+.botao:active{
+    background: #afdb75;
+}
+
+input::placeholder{
+    align-items: center;
+    padding: 2px 4px;
+    font-size: smaller;
+}
+
+input:active{
+    border: none;
+}
+
+footer{
+    background: rgb(245, 245, 245);
+    height: 100px;
+    margin-top: 10px;
+}
+
+@media screen and (max-width: 1000px) {
+    main{
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+    }
+
+    h1{
+        font-size: 2rem;
+    }
+
+    .card-forms{
+        width: 95%;
+    }
+
+    form{
+        justify-content: center;
+        
+    }
+
+    .conteudo-ilustracao{
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+    form{
+        width: 100%;
+    }
+    
+    .etapa1, .etapa2, .etapa3{
+        width: 100%;    
+        height: 100%;
+        align-items: center;
+   }
+
+   input{
+       margin: 5px;
+       width: 90%;
+   }
+
+   .botoes-1step {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+   }
+
+   .skip2{
+       width: 100%;
+   }
+
+    .ilust{
+        position: static;
+        justify-items: center;
+        width: 100%;
+        text-align: center;
+        margin-top: 10px;
+    }
+    img{
+        width: 60%;
+    }
+}

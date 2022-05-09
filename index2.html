@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="wi
+    dth=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/estilo copy.css">
+    <title>Formulario</title>
+</head>
+
+<body>
+    <header>
+        <div>
+            <div class="imagem">
+                <img class="logo" src="/logo.png" alt="">
+            </div>
+        </div>
+    </header>
+    <main>
+        <h1> Preencha os dados para o fechamento <br> em apenas 3 etapas. </h1>
+
+        <div class="conteudo-ilustracao">
+
+            <div class="ilust">
+                <img src="/Mobile Marketing-bro.svg" alt="">
+            </div>
+
+            <div class="card-forms">
+                <form action="">
+                    
+                    <div class="etapa1" id="step1">
+                        <h3>Dados Pessoais</h3>
+                        <p class="erro">Preencha todos os campos</p>
+                        <input type="text" id="Name" class="etp1" placeholder="Nome de Contato"  required>
+                        <input type="email" id="Email" class="etp1" placeholder="Email do Contato" required>
+                        <input type="text" id="CompanyName" class="etp1" placeholder="Nome da Igreja" required>
+                        <input type="text" id="CustomFieldsCompanyRazaoSocial" class="etp1"
+                            placeholder="Razão Social da Igreja" required>
+                        <div class="botoes-1step">
+                            <button onclick="skip2()" class="skip2"> Proximo </button>
+                        </div>
+                    </div>
+    
+                    <div class="etapa2" id="step2">
+                        <h3>Endereço</h3>
+                        <p class="erro">Preencha todos os campos</p>
+                        <input type="text" id="cep" pattern="[0-9]{5}[0-9]{3}" maxlength="8" class="etp2" placeholder="CEP" required>
+                        <input type="text" id="localidade" class="etp2" placeholder="Cidade" required>
+                        <input type="text" id="uf" class="etp2" placeholder="Estado" required>
+                        <input type="text" id="bairro" class="etp2" placeholder="Bairro" required>
+                        <input type="text" id="logradouro" class="etp2" placeholder="Logradouro" required>
+                        <input type="text" id="CompanyAddress2" class="etp2" placeholder="Número" required>
+                        <input type="text" id="complemento" class="etp2" placeholder="Complemento"
+                            required>
+                            <div class="botoes">
+                                <button onclick="back1()" class="back1"> Voltar </button>
+                                <button onclick="skip3()" class="skip3"> Proximo </button>
+                            </div>
+                            
+                    </div>
+    
+                    <div class="etapa3" id="step3">
+                        <h3>Dados financeiros</h3>
+                        <p class="erro">Preencha todos os campos</p>
+                        <input type="text" maxlength="14" id="CustomFieldsCompanyCNPJ" class="etp3" placeholder="CNPJ da Igreja" required>
+                        <small>Digite apenas números</small>
+                        <input type="text" id="CustomFieldsCompanyUsuárioGranito" class="etp3"
+                            placeholder="Nome Responsável Financeiro" required>
+                        <input type="text" id="CustomFieldsCompanyEmailResponsávelGranito" class="etp3"
+                            placeholder="Email Responsável Financeiro" required>
+                        <input type="text" id="CustomFieldsCompanyTelefoneResponsávelGranito" class="etp3"
+                            placeholder="Telefone Responsável Financeiro" required>
+                        <input type="text" id="CustomFieldsCompanyPrimeiraSolucao" class="etp3"
+                            placeholder="Primeira solução que interessou o cliente" required>
+                        <input type="text" id="CustomFieldsCompanySegundaSolucao" class="etp3"
+                            placeholder="Segunda solução que interessou o cliente" required>
+                        <input type="text" id="CustomFieldsCompanyTerceiraSolucao" class="etp3" placeholder="Terceira solução que interessou o cliente" required>
+    
+                        <div class="botoes">
+                            <button onclick="back2()" class="back2"> Voltar </button>
+                            <input  type="submit" id="btn-enviar">
+                        </div>
+                        
+                    </div>
+    
+                </form>
+            </div>
+        </div>
+
+    </main>
+    <script type="text/javascript" src="/post.js"></script>
+</body>
+
+</html>
