@@ -25,6 +25,7 @@ const passar2 = document.querySelector(".skip3")
 
 const fields1 = document.querySelectorAll('.etp1[required]')
 const fields2 = document.querySelectorAll('.etp2[required]')
+console.log(fields2)
 const fields3 = document.querySelectorAll('.etp3[required]')
 
 
@@ -100,7 +101,7 @@ CEPInput.addEventListener("blur", (e) => {
     console.log(CEPInput.value)
 })
 
-CNPJInput.addEventListener("blur", e =>{
+CNPJInput.addEventListener("blur", e => {
     CNPJInput.value = CNPJInput.value.replace(".", "")
     CNPJInput.value = CNPJInput.value.replace(/^(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, "$1.$2.$3/$4-$5")
 })
@@ -108,26 +109,28 @@ CNPJInput.addEventListener("blur", e =>{
 // Botões
 // Botões de avançar
 
-function avisaValidez (contador, paragrafo) {
+function avisaValidez(contador, paragrafo) {
     contador.addEventListener("invalid", event => {
         // document.querySelector(paragrafo).style.display = 'block'
         // document.querySelector(paragrafo).textContent = `Campo invalido`
         invalido = true
-        })
-} 
+    })
+}
 
 function skip2() {
     for (const c of fields1) {
-        const invalido = false
-        if (c.value == '') {
-            document.querySelector('.etapa1 p').style.display = 'block'
-            document.querySelector('.etapa1 p').textContent = 'Preencha todos os campos'
-
-            avisaValidez(c,'.etapa1 p')
-        } else if (invalido){
+         console.log(c.value)
+         let validacao = '';
+       c.addEventListener("invalid", event => {
+                 validacao = 'invalido'
+            })
+            console.log(validacao)
+        if (c.value == '' || validacao == 'invalido') {
+                document.querySelector('.etapa1 p').style.display = 'block'
+        } else {
             document.getElementById('step1').style.display = "none";
             document.getElementById('step2').style.display = "flex";
-            document.querySelector('.etapa1 p').style.display = "none"
+            document.querySelector('.etapa1 p').style.display = "none";  
         }
     }
 }
