@@ -27,6 +27,8 @@ const fields1 = document.querySelectorAll('.etp1[required]')
 const fields2 = document.querySelectorAll('.etp2[required]')
 const fields3 = document.querySelectorAll('.etp3[required]')
 
+const msgSucesso = document.querySelector('.sombra')
+
 
 // Função enviar
 
@@ -39,7 +41,7 @@ function post(url, dados) {
             return response.json()
         })
         .then(function (response) {
-            alert("Cadastro feito com sucesso")
+            document.querySelector('.sombra').style.display = 'block'
             return
         })
 }
@@ -68,9 +70,15 @@ function enviaForm() {
         'Custom Fields Company Terceira Solucao': solucao3Input.value
     }
     console.log(dados)
-
     post(url, dados)
 }
+
+// reload na mensagem de sucesso
+
+msgSucesso.addEventListener("click", event =>{
+    location.reload()
+})
+
 
 // Consulta de CEP e validação do CNPJ
 
@@ -82,13 +90,12 @@ const showData = (result) => {
     }
 }
 
-CEPInput.addEventListener("keydown", (e) => {
+CEPInput.addEventListener("keyup", (e) => {
     let search = CEPInput.value.replace("-", "")
     const options = {
         method: 'GET',
         mode: 'cors',
         cache: 'default'
-
     }
 
     fetch(`https://viacep.com.br/ws/${search}/json/`, options)
@@ -108,10 +115,9 @@ CNPJInput.addEventListener("keyup", e => {
 
 function skip2() {
     var camposInvalidos = 0
-
     for (var c of fields1) {
 
-        if (!c.checkValidity() || document.querySelector("#cep").value.length > 9) {
+        if (!c.checkValidity() || !nomeInput.value.includes(" ")) {
             document.querySelector('.etapa1 p').style.display = 'block'
             camposInvalidos = camposInvalidos + 1
         }
@@ -127,7 +133,7 @@ function skip2() {
 function skip3() {
     for (const c of fields2) {
         var camposInvalidos = 0
-        if (!c.checkValidity()) {
+        if (!c.checkValidity() || document.querySelector("#cep").value.length > 9) {
             document.querySelector('.etapa1 p').style.display = 'block'
             camposInvalidos = camposInvalidos + 1
         }
@@ -159,7 +165,7 @@ submitButton.addEventListener("click", function (event) {
     for (const c of fields3) {
         var camposInvalidos = 0
 
-        if (!c.checkValidity() || document.querySelector("#CustomFieldsCompanyCNPJ").value.length < 18) {
+        if (!c.checkValidity() || document.querySelector("#CustomFieldsCompanyCNPJ").value.length < 16) {
             document.querySelector('.etapa3 p').style.display = 'block'
             camposInvalidos = camposInvalidos + 1
         }

@@ -30,6 +30,47 @@ p{
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.sombra{
+    display: none;
+    position: absolute;
+    top: 0;
+    background: #000000a2;
+    width: 100vw;
+    height: 100vh;
+}
+
+.card-sucesso{
+    /* display: none; */
+    position: absolute;
+    top: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 400px;
+    padding: 5px;
+    height: 40% /2;
+    background: #ffffff;
+    opacity: 96%;
+    border-radius: 5px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.555);
+}
+
+.mensagem{
+    margin: 3px;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+}
+
+.card-sucesso h3{
+    color: #96E035;
+    font-size: 20px;
+    width: 100%;
+    text-align: center;
+}
+.card-sucesso img{
+    width: 50px;
+}
+
 
 .logo{
     width: 120px;
@@ -171,6 +212,10 @@ footer{
 
     h1{
         font-size: 2rem;
+    }
+
+    .card-sucesso{
+        width: 60%;
     }
 
     .card-forms{
