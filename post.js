@@ -25,7 +25,6 @@ const passar2 = document.querySelector(".skip3")
 
 const fields1 = document.querySelectorAll('.etp1[required]')
 const fields2 = document.querySelectorAll('.etp2[required]')
-console.log(fields2)
 const fields3 = document.querySelectorAll('.etp3[required]')
 
 
@@ -41,6 +40,7 @@ function post(url, dados) {
         })
         .then(function (response) {
             alert("Cadastro feito com sucesso")
+            return
         })
 }
 
@@ -82,7 +82,7 @@ const showData = (result) => {
     }
 }
 
-CEPInput.addEventListener("blur", (e) => {
+CEPInput.addEventListener("keydown", (e) => {
     let search = CEPInput.value.replace("-", "")
     const options = {
         method: 'GET',
@@ -101,52 +101,40 @@ CEPInput.addEventListener("blur", (e) => {
     console.log(CEPInput.value)
 })
 
-CNPJInput.addEventListener("blur", e => {
+CNPJInput.addEventListener("keyup", e => {
     CNPJInput.value = CNPJInput.value.replace(".", "")
     CNPJInput.value = CNPJInput.value.replace(/^(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, "$1.$2.$3/$4-$5")
 })
 
-// Botões
-// Botões de avançar
-
-function avisaValidez(contador, paragrafo) {
-    contador.addEventListener("invalid", event => {
-        // document.querySelector(paragrafo).style.display = 'block'
-        // document.querySelector(paragrafo).textContent = `Campo invalido`
-        invalido = true
-    })
-}
-
 function skip2() {
-    for (const c of fields1) {
-         console.log(c.value)
-         let validacao = '';
-       c.addEventListener("invalid", event => {
-                 validacao = 'invalido'
-            })
-            console.log(validacao)
-        if (c.value == '' || validacao == 'invalido') {
-                document.querySelector('.etapa1 p').style.display = 'block'
-        } else {
-            document.getElementById('step1').style.display = "none";
-            document.getElementById('step2').style.display = "flex";
-            document.querySelector('.etapa1 p').style.display = "none";  
+    var camposInvalidos = 0
+
+    for (var c of fields1) {
+
+        if (!c.checkValidity() || document.querySelector("#cep").value.length > 9) {
+            document.querySelector('.etapa1 p').style.display = 'block'
+            camposInvalidos = camposInvalidos + 1
         }
+    }
+    if (camposInvalidos === 0) {
+        console.log(camposInvalidos)
+        document.getElementById('step1').style.display = "none";
+        document.getElementById('step2').style.display = "flex";
+        document.querySelector('.etapa1 p').style.display = "none";
     }
 }
 
 function skip3() {
     for (const c of fields2) {
-        console.log(c.value)
-        if (c.value == '') {
-            document.querySelector('.etapa2 p').style.display = 'block'
-
-        } else {
-            document.getElementById('step2').style.display = "none";
-            document.getElementById('step3').style.display = "flex";
-            // console.log(cidadeInput.value, estadoInput.value, CEPInput.value, bairroInput.value, logradouroInput.value, numeroInput.value, complementoInput.value)
-            document.querySelector('.etapa2 p').style.display = 'none';
+        var camposInvalidos = 0
+        if (!c.checkValidity()) {
+            document.querySelector('.etapa1 p').style.display = 'block'
+            camposInvalidos = camposInvalidos + 1
         }
+    } if (camposInvalidos === 0) {
+        document.getElementById('step2').style.display = "none";
+        document.getElementById('step3').style.display = "flex";
+        document.querySelector('.etapa2 p').style.display = 'none';
     }
 }
 
@@ -169,14 +157,15 @@ submitButton.addEventListener("click", function (event) {
     event.preventDefault()
 
     for (const c of fields3) {
-        console.log(c.value)
-        if (c.value == '') {
-            document.querySelector('.etapa3 p').style.display = 'block'
+        var camposInvalidos = 0
 
-        } else {
-            // console.log(CNPJInput.value, RFIInput.value, ERFInput.value, TRFInput.value, solucao1Input.value, solucao2Input.value, solucao3Input.value)
-            document.querySelector('.etapa3 p').style.display = 'none'
-            enviaForm()
+        if (!c.checkValidity() || document.querySelector("#CustomFieldsCompanyCNPJ").value.length < 18) {
+            document.querySelector('.etapa3 p').style.display = 'block'
+            camposInvalidos = camposInvalidos + 1
         }
+
+    } if (camposInvalidos === 0) {
+        document.querySelector('.etapa3 p').style.display = 'none'
+        enviaForm()
     }
 })
