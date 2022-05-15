@@ -41,7 +41,7 @@
                         <h3>Dados Pessoais</h3>
                         <p class="erro">Preencha todos os campos</p>
                         <input type="text" id="Name" class="etp1" placeholder="Nome completo"  required>
-                        <input type="email" id="Email" class="etp1" placeholder="Email do Contato" required>
+                        <input type="email" id="Email" onkeyup="" onb class="etp1" placeholder="Email do Contato" required>
                         <input type="text" id="CompanyName" class="etp1" placeholder="Nome da Igreja" required>
                         <input type="text" id="CustomFieldsCompanyRazaoSocial" class="etp1"
                             placeholder="Razão Social da Igreja" required>
@@ -53,7 +53,7 @@
                     <div class="etapa2" id="step2">
                         <h3>Endereço</h3>
                         <p class="erro">Preencha todos os campos</p>
-                        <input type="text" id="cep" maxlength="8" class="etp2" placeholder="CEP" required>
+                        <input type="text" id="cep" maxlength="8" class="etp2" data-mask="00000-000" placeholder="CEP" required>
                         <input type="text" id="localidade" class="etp2" placeholder="Cidade" required>
                         <input type="text" id="uf" class="etp2" placeholder="Estado" required>
                         <input type="text" id="bairro" class="etp2" placeholder="Bairro" required>
@@ -71,12 +71,12 @@
                     <div class="etapa3" id="step3">
                         <h3>Dados financeiros</h3>
                         <p class="erro">Preencha todos os campos</p>
-                        <input type="text" maxlength="14" minlength="14" id="CustomFieldsCompanyCNPJ" class="etp3" placeholder="CNPJ da Igreja" required>
+                        <input type="text" maxlength="18" minlength="14" id="CustomFieldsCompanyCNPJ" data-mask="00.000.000\0000-00" class="etp3" placeholder="CNPJ da Igreja" required>
                         <input type="text" id="CustomFieldsCompanyUsuárioGranito" class="etp3"
                             placeholder="Nome Responsável Financeiro" required>
                         <input type="email" id="CustomFieldsCompanyEmailResponsávelGranito" class="etp3"
                             placeholder="Email Responsável Financeiro" required>
-                        <input type="tel" id="CustomFieldsCompanyTelefoneResponsávelGranito" class="etp3"
+                        <input type="tel" id="CustomFieldsCompanyTelefoneResponsávelGranito" data-mask="(00)00000-0000" class="etp3"
                             placeholder="Telefone Responsável Financeiro" required>
                         <input type="text" id="CustomFieldsCompanyPrimeiraSolucao" class="etp3"
                             placeholder="Primeira solução que interessou o cliente" required>
@@ -97,6 +97,8 @@
 
     </main>
     <script type="text/javascript" src="post.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js" integrity="sha512-pHVGpX7F/27yZ0ISY+VVjyULApbDlD0/X0rgGbTqCE7WFW5MezNTWG/dnhtbBuICzsd0WQPgpE4REBLv+UqChw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </body>
 
 </html>

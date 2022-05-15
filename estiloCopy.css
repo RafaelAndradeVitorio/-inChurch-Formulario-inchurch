@@ -149,6 +149,7 @@ input{
     font-size: 15px;
     padding: 2px 13px;
     border-radius: 15px;
+    border: 1px solid black;
    
 }
 

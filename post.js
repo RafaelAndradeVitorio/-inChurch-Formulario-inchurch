@@ -23,9 +23,12 @@ const solucao3Input = document.querySelector("#CustomFieldsCompanyTerceiraSoluca
 const passar1 = document.querySelector(".skip2")
 const passar2 = document.querySelector(".skip3")
 
-const fields1 = document.querySelectorAll('.etp1[required]')
 const fields2 = document.querySelectorAll('.etp2[required]')
 const fields3 = document.querySelectorAll('.etp3[required]')
+const fields1 = document.querySelectorAll('.etp1[required]')
+
+const fields = document.querySelectorAll('input[required]')
+console.log(fields)
 
 const msgSucesso = document.querySelector('.sombra')
 
@@ -75,12 +78,12 @@ function enviaForm() {
 
 // reload na mensagem de sucesso
 
-msgSucesso.addEventListener("click", event =>{
+msgSucesso.addEventListener("click", event => {
     location.reload()
 })
 
 
-// Consulta de CEP e validação do CNPJ
+// Consulta de CEP e validações
 
 const showData = (result) => {
     for (const campo in result) {
@@ -108,18 +111,83 @@ CEPInput.addEventListener("keyup", (e) => {
     console.log(CEPInput.value)
 })
 
-CNPJInput.addEventListener("keyup", e => {
-    CNPJInput.value = CNPJInput.value.replace(".", "")
-    CNPJInput.value = CNPJInput.value.replace(/^(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, "$1.$2.$3/$4-$5")
+emailInput.addEventListener("blur", () => {
+    console.log(emailInput.checkValidity())
+    if (!emailInput.checkValidity()) {
+        emailInput.style.border = "1px solid red"
+        emailInput.style.focus = 'red'
+    } else {
+        emailInput.style.border = "1px solid black"
+    }
 })
+
+for (campo of fields1) {
+    campo.addEventListener("blur", () => {
+        console.log(campo.checkValidity())
+        if (!campo.checkValidity()) {
+            campo.style.border = "1px solid red"
+            campo.style.focus = 'red'
+        } else {
+            campo.style.border = "1px solid black"
+        }
+    })
+}
+for (campo of fields2) {
+    campo.addEventListener("blur", () => {
+        console.log(campo.checkValidity())
+        if (!campo.checkValidity()) {
+            campo.style.border = "1px solid red"
+            campo.style.focus = 'red'
+        } else {
+            campo.style.border = "1px solid black"
+        }
+    })
+}
+
+function checarValidade(nome){
+    var validade = true
+    if(nome.checkValidity() && nome.value.includes(" ") ){
+      return  validade = true
+    } else {
+       return validade = false
+    }
+}
+nomeInput.addEventListener("blur", () => {
+    if (checarValidade(nomeInput) === false) {
+        nomeInput.style.border = "1px solid red"
+        nomeInput.style.focus = 'red'
+        document.querySelector('.etapa1 p').style.display = 'block'
+    } else {
+        nomeInput.style.border = "1px solid black"
+        document.querySelector('.etapa1 p').style.display = 'none'
+    }
+})
+
+//funções dos botões
 
 function skip2() {
     var camposInvalidos = 0
-    for (var c of fields1) {
+    
+    checarValidade(nomeInput)
+    console.log( `Resultado checar validade ${checarValidade(nomeInput)}`)
 
-        if (!c.checkValidity() || !nomeInput.value.includes(" ")) {
+    if (checarValidade(nomeInput) === false) {
+        nomeInput.style.border = "1px solid red"
+        nomeInput.style.focus = 'red'
+        camposInvalidos = camposInvalidos + 1
+    } else {
+        nomeInput.style.border = "1px solid black"
+    }
+
+    console.log(`O número de campos invalidos é ${camposInvalidos}`)     
+
+    for (var c of fields1) {
+        if (!c.checkValidity()) {
+            c.style.border = "1px solid red"
             document.querySelector('.etapa1 p').style.display = 'block'
             camposInvalidos = camposInvalidos + 1
+        } else {
+            c.style.border = "1px solid black"
         }
     }
     if (camposInvalidos === 0) {
@@ -131,11 +199,14 @@ function skip2() {
 }
 
 function skip3() {
-    for (const c of fields2) {
+    for (var c of fields2) {
         var camposInvalidos = 0
-        if (!c.checkValidity() || document.querySelector("#cep").value.length > 9) {
-            document.querySelector('.etapa1 p').style.display = 'block'
+        if (!c.checkValidity()) {
+            c.style.border = "1px solid red"
+            document.querySelector('.etapa2 p').style.display = 'block'
             camposInvalidos = camposInvalidos + 1
+        } else {
+            c.style.border = "1px solid black"
         }
     } if (camposInvalidos === 0) {
         document.getElementById('step2').style.display = "none";
@@ -165,9 +236,12 @@ submitButton.addEventListener("click", function (event) {
     for (const c of fields3) {
         var camposInvalidos = 0
 
-        if (!c.checkValidity() || document.querySelector("#CustomFieldsCompanyCNPJ").value.length < 16) {
+        if (!c.checkValidity()) {
             document.querySelector('.etapa3 p').style.display = 'block'
+            c.style.border = "1px solid red"
             camposInvalidos = camposInvalidos + 1
+        } else {
+            c.style.border = "1px solid black"
         }
 
     } if (camposInvalidos === 0) {
