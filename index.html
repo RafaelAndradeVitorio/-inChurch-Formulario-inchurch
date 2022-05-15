@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="estiloCopy.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>Formulario</title>
 </head>
 
@@ -22,8 +23,12 @@
         <div class="sombra">
             <div class="card-sucesso">
                 <div class="mensagem">
+                    <small>Obrigado por preencher o formulario</small>
                     <h3>Cadastro feito com sucesso!</h3>
                     <img src="/sucesso.png" alt="">
+                    <span class="material-symbols-outlined">
+                        close
+                        </span>
                 </div>
             </div>
         </div>
@@ -41,10 +46,14 @@
                         <h3>Dados Pessoais</h3>
                         <p class="erro">Preencha todos os campos</p>
                         <input type="text" id="Name" class="etp1" placeholder="Nome completo"  required>
-                        <input type="email" id="Email" onkeyup="" onb class="etp1" placeholder="Email do Contato" required>
+                        <small>Ex: Nome Sobrenome</small>
+                        <input type="email" id="Email" class="etp1" placeholder="Email do Contato" required>
+                        <small>Ex: exemplo@dominio.com</small>
                         <input type="text" id="CompanyName" class="etp1" placeholder="Nome da Igreja" required>
+                        <small>Ex: Igreja Batista InChurch</small>
                         <input type="text" id="CustomFieldsCompanyRazaoSocial" class="etp1"
                             placeholder="Razão Social da Igreja" required>
+                            <small>Ex: Igreja Batista InChurch</small>
                         <div class="botoes-1step">
                             <button onclick="skip2()" class="skip2"> Proximo </button>
                         </div> 
@@ -54,13 +63,20 @@
                         <h3>Endereço</h3>
                         <p class="erro">Preencha todos os campos</p>
                         <input type="text" id="cep" maxlength="8" class="etp2" data-mask="00000-000" placeholder="CEP" required>
+                        <small>Ex: 00000-000</small>
                         <input type="text" id="localidade" class="etp2" placeholder="Cidade" required>
+                        <small>Ex: Rio de Janeiro, Minas Gerais...</small>
                         <input type="text" id="uf" class="etp2" placeholder="Estado" required>
+                        <small>Ex: Resende, Belo Horizonte...</small>
                         <input type="text" id="bairro" class="etp2" placeholder="Bairro" required>
+                        <small>Ex: Jardim Alegria, Santa Lúcia</small>
                         <input type="text" id="logradouro" class="etp2" placeholder="Logradouro" required>
+                        <small>Ex: Rua inChurch</small>
                         <input type="text" id="CompanyAddress2" class="etp2" placeholder="Número" required>
+                        <small>Ex: 456</small>
                         <input type="text" id="complemento" class="etp2" placeholder="Complemento"
                             required>
+                            <small>Ex: bloco, apartamento...</small>
                             <div class="botoes">
                                 <button onclick="back1()" class="back1"> Voltar </button>
                                 <button onclick="skip3()" class="skip3"> Proximo </button>
@@ -72,17 +88,24 @@
                         <h3>Dados financeiros</h3>
                         <p class="erro">Preencha todos os campos</p>
                         <input type="text" maxlength="18" minlength="14" id="CustomFieldsCompanyCNPJ" data-mask="00.000.000\0000-00" class="etp3" placeholder="CNPJ da Igreja" required>
+                        <small>Ex: xx.xxx.xxx\xxxx-xx</small>
                         <input type="text" id="CustomFieldsCompanyUsuárioGranito" class="etp3"
                             placeholder="Nome Responsável Financeiro" required>
+                            <small>Ex: Nome Sobrenome</small>
                         <input type="email" id="CustomFieldsCompanyEmailResponsávelGranito" class="etp3"
                             placeholder="Email Responsável Financeiro" required>
+                            <small>Ex: exemplo@dominio.com</small>
                         <input type="tel" id="CustomFieldsCompanyTelefoneResponsávelGranito" data-mask="(00)00000-0000" class="etp3"
                             placeholder="Telefone Responsável Financeiro" required>
+                            <small>Ex: (00)00000-0000</small>
                         <input type="text" id="CustomFieldsCompanyPrimeiraSolucao" class="etp3"
                             placeholder="Primeira solução que interessou o cliente" required>
+                            <small>Ex: Eventos, controle de membresia, comunicação...</small>
                         <input type="text" id="CustomFieldsCompanySegundaSolucao" class="etp3"
                             placeholder="Segunda solução que interessou o cliente" required>
+                            <small>Ex: Eventos, controle de membresia, comunicação...</small>
                         <input type="text" id="CustomFieldsCompanyTerceiraSolucao" class="etp3" placeholder="Terceira solução que interessou o cliente" required>
+                        <small>Ex: Eventos, controle de membresia, comunicação...</small>
     
                         <div class="botoes">
                             <button onclick="back2()" class="back2"> Voltar </button>

@@ -121,7 +121,7 @@ emailInput.addEventListener("blur", () => {
     }
 })
 
-for (campo of fields1) {
+for (let campo of fields1) {
     campo.addEventListener("blur", () => {
         console.log(campo.checkValidity())
         if (!campo.checkValidity()) {
@@ -132,7 +132,18 @@ for (campo of fields1) {
         }
     })
 }
-for (campo of fields2) {
+for (let campo of fields2) {
+    campo.addEventListener("blur", () => {
+        console.log(campo.checkValidity())
+        if (!campo.checkValidity()) {
+            campo.style.border = "1px solid red"
+            campo.style.focus = 'red'
+        } else {
+            campo.style.border = "1px solid black"
+        }
+    })
+}
+for (let campo of fields3) {
     campo.addEventListener("blur", () => {
         console.log(campo.checkValidity())
         if (!campo.checkValidity()) {
@@ -144,22 +155,31 @@ for (campo of fields2) {
     })
 }
 
-function checarValidade(nome){
+function checarValidade(nome) {
     var validade = true
-    if(nome.checkValidity() && nome.value.includes(" ") ){
-      return  validade = true
+    if (nome.checkValidity() && nome.value.includes(" ")) {
+        return validade = true
     } else {
-       return validade = false
+        return validade = false
     }
 }
 nomeInput.addEventListener("blur", () => {
     if (checarValidade(nomeInput) === false) {
         nomeInput.style.border = "1px solid red"
         nomeInput.style.focus = 'red'
-        document.querySelector('.etapa1 p').style.display = 'block'
     } else {
         nomeInput.style.border = "1px solid black"
         document.querySelector('.etapa1 p').style.display = 'none'
+    }
+})
+
+RFIput.addEventListener("blur", () => {
+    if (checarValidade(RFIput) === false) {
+        RFIput.style.border = "1px solid red"
+        RFIput.style.focus = 'red'
+    } else {
+        RFIput.style.border = "1px solid black"
+        document.querySelector('.etapa3 p').style.display = 'none'
     }
 })
 
@@ -167,19 +187,11 @@ nomeInput.addEventListener("blur", () => {
 
 function skip2() {
     var camposInvalidos = 0
-    
+
     checarValidade(nomeInput)
-    console.log( `Resultado checar validade ${checarValidade(nomeInput)}`)
+    console.log(`Resultado checar validade ${checarValidade(nomeInput)}`)
 
-    if (checarValidade(nomeInput) === false) {
-        nomeInput.style.border = "1px solid red"
-        nomeInput.style.focus = 'red'
-        camposInvalidos = camposInvalidos + 1
-    } else {
-        nomeInput.style.border = "1px solid black"
-    }
-
-    console.log(`O número de campos invalidos é ${camposInvalidos}`)     
+    console.log(`O número de campos invalidos é ${camposInvalidos}`)
 
     for (var c of fields1) {
         if (!c.checkValidity()) {
@@ -190,6 +202,15 @@ function skip2() {
             c.style.border = "1px solid black"
         }
     }
+
+    if (checarValidade(nomeInput) === false) {
+        nomeInput.style.border = "1px solid red"
+        document.querySelector('.etapa1 p').style.display = 'block'
+        camposInvalidos = camposInvalidos + 1
+    } else {
+        nomeInput.style.border = "1px solid black"
+    }
+
     if (camposInvalidos === 0) {
         console.log(camposInvalidos)
         document.getElementById('step1').style.display = "none";
@@ -199,8 +220,10 @@ function skip2() {
 }
 
 function skip3() {
+
+    var camposInvalidos = 0
+
     for (var c of fields2) {
-        var camposInvalidos = 0
         if (!c.checkValidity()) {
             c.style.border = "1px solid red"
             document.querySelector('.etapa2 p').style.display = 'block'
@@ -232,10 +255,11 @@ const submitButton = document.querySelector('#btn-enviar')
 
 submitButton.addEventListener("click", function (event) {
     event.preventDefault()
+    var camposInvalidos = 0
+    checarValidade(RFIput)
+    console.log(checarValidade(RFIput))
 
     for (const c of fields3) {
-        var camposInvalidos = 0
-
         if (!c.checkValidity()) {
             document.querySelector('.etapa3 p').style.display = 'block'
             c.style.border = "1px solid red"
@@ -243,8 +267,16 @@ submitButton.addEventListener("click", function (event) {
         } else {
             c.style.border = "1px solid black"
         }
+    } 
 
-    } if (camposInvalidos === 0) {
+    if (checarValidade(RFIput) === false) {
+        RFIput.style.border = "1px solid red"
+        document.querySelector('.etapa3 p').style.display = 'block'
+        camposInvalidos = camposInvalidos + 1
+    }
+
+    if (camposInvalidos === 0) {
+        RFIput.style.border = "1px solid black"
         document.querySelector('.etapa3 p').style.display = 'none'
         enviaForm()
     }
