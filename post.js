@@ -183,6 +183,15 @@ RFIput.addEventListener("blur", () => {
     }
 })
 
+TRFInput.addEventListener("blur", () => {
+    if (TRFInput.value.length !== 15) {
+        TRFInput.style.border = "1px solid red"
+    } else {
+        TRFInput.style.border = "1px solid black"
+        document.querySelector('.etapa3 p').style.display = 'none'
+    }
+})
+
 //funções dos botões
 
 function skip2() {
@@ -275,9 +284,15 @@ submitButton.addEventListener("click", function (event) {
         camposInvalidos = camposInvalidos + 1
     }
 
+    if (TRFInput.value.length !== 15){
+        TRFInput.style.border = "1px solid red"
+        document.querySelector('.etapa3 p').style.display = 'block'
+        camposInvalidos = camposInvalidos + 1
+    }
+
     if (camposInvalidos === 0) {
         RFIput.style.border = "1px solid black"
         document.querySelector('.etapa3 p').style.display = 'none'
         enviaForm()
     }
-})
+}) 
