@@ -102,6 +102,7 @@ p{
     font-size: 20px;
     width: 100%;
     text-align: center;
+    margin-bottom:  2.5px;
 }
 .card-sucesso img{
     width: 50px;
@@ -185,7 +186,6 @@ input{
     font-size: 15px;
     padding: 2px 13px;
     border-radius: 15px;
-   
 }
 
 .botao, .skip2, .skip3, .btn-enviar, .back1, .back2{
@@ -198,6 +198,10 @@ input{
     padding: 2px 13px;
     border-radius: 15px;
     transition: 500ms;
+}
+
+button:hover{
+    box-shadow: 1px 1px 3px black;
 }
 
 .skip2, .skip3, .btn-enviar{
@@ -213,6 +217,10 @@ input{
     width: 100%;
     display: flex;
     justify-content: space-around;
+}
+
+.botoes input{
+    width: 40%;
 }
 
 .botao:hover{
