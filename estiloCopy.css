@@ -198,10 +198,15 @@ input{
     padding: 2px 13px;
     border-radius: 15px;
     transition: 500ms;
+    cursor: pointer;
+}
+
+.back1, .back2{
+    background: #e6e6e6;
 }
 
 button:hover{
-    box-shadow: 1px 1px 3px black;
+    box-shadow: 1px 1px 5px black;
 }
 
 .skip2, .skip3, .btn-enviar{
@@ -221,6 +226,12 @@ button:hover{
 
 .botoes input{
     width: 40%;
+    transition: 500ms;
+    cursor: pointer;
+}
+
+.botoes input:hover{
+    box-shadow: 1px 1px 5px black;
 }
 
 .botao:hover{
