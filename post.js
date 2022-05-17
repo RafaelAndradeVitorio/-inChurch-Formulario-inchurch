@@ -25,9 +25,10 @@ const passar2 = document.querySelector(".skip3")
 
 const fields2 = document.querySelectorAll('.etp2[required]')
 const fields3 = document.querySelectorAll('.etp3[required]')
+console.log(fields3)
 const fields1 = document.querySelectorAll('.etp1[required]')
 
-const fields = document.querySelectorAll('input[required]')
+const fields = document.querySelectorAll('select')
 console.log(fields)
 
 const msgSucesso = document.querySelector('.sombra')
@@ -47,15 +48,69 @@ function post(url, dados) {
             document.querySelector('.sombra').style.display = 'block'
             return
         })
+
+    
 }
 
+
+function enviaFormPipz() {
+    let url = "https://app.pipz.io/webhook/1624.146.8d5eb"
+    dados = {
+        'Name': nomeInput.value,
+        'Email': emailInput.value,
+        'CompanyName': CMInput.value,
+        'Custom Fields Company Razao Social': CFInput.value,
+        'Company City Name': cidadeInput.value,
+        'Company State': estadoInput.value,
+        'Company Postal Code': CEPInput.value,
+        'Company Region Name': bairroInput.value,
+        'Company Address1': logradouroInput.value,
+        'Company Address2': numeroInput.value,
+        'Custom Fields Company Complemento': complementoInput.value,
+        'Custom Fields Company CNPJ': CNPJInput.value,
+        'Custom Fields Company Usuário Granito': RFIput.value,
+        'Custom Fields Company Email Responsável Granito': ERFInput.value,
+        'Custom Fields Company Telefone Responsável Granito': TRFInput.value,
+        'Custom Fields Company Primeira Solucao': solucao1Input.value,
+        'Custom Fields Company Segunda Solucao': solucao2Input.value,
+        'Custom Fields Company Terceira Solucao': solucao3Input.value
+    }
+    console.log(dados)
+    post(url, dados)
+}
+
+function enviaFormAutomate() {
+    let url = "https://wh.automate.io/webhook/62828d043b431f416883be30"
+    dados = {
+        'Name': nomeInput.value,
+        'Email': emailInput.value,
+        'CompanyName': CMInput.value,
+        'Custom Fields Company Razao Social': CFInput.value,
+        'Company City Name': cidadeInput.value,
+        'Company State': estadoInput.value,
+        'Company Postal Code': CEPInput.value,
+        'Company Region Name': bairroInput.value,
+        'Company Address1': logradouroInput.value,
+        'Company Address2': numeroInput.value,
+        'Custom Fields Company Complemento': complementoInput.value,
+        'Custom Fields Company CNPJ': CNPJInput.value,
+        'Custom Fields Company Usuário Granito': RFIput.value,
+        'Custom Fields Company Email Responsável Granito': ERFInput.value,
+        'Custom Fields Company Telefone Responsável Granito': TRFInput.value,
+        'Custom Fields Company Primeira Solucao': document.querySelector('select').value,
+        'Custom Fields Company Segunda Solucao': solucao2Input.value,
+        'Custom Fields Company Terceira Solucao': solucao3Input.value
+    }
+    console.log(dados)
+    post(url, dados)
+}
 
 function enviaForm() {
     let url = "https://reqres.in/api/users"
     dados = {
         'Name': nomeInput.value,
         'Email': emailInput.value,
-        'CompanyName': CMInput.value,
+        'CompanyName': `${CMInput.value} - ${bairroInput.value}`,
         'Custom Fields Company Razao Social': CFInput.value,
         'Company City Name': cidadeInput.value,
         'Company State': estadoInput.value,
@@ -119,6 +174,18 @@ emailInput.addEventListener("blur", () => {
     } else {
         emailInput.style.border = "1px solid black"
     }
+})
+
+CNPJInput.addEventListener('keypress', () =>{
+   cnpjTamanho = CNPJInput.value.length
+
+   if (cnpjTamanho === 2 || cnpjTamanho === 6){
+       CNPJInput.value += '.'
+   } else if ( cnpjTamanho === 10){
+    CNPJInput.value += '/'
+   } else if ( cnpjTamanho === 15){
+    CNPJInput.value += '-'
+   }
 })
 
 for (let campo of fields1) {
@@ -276,6 +343,7 @@ submitButton.addEventListener("click", function (event) {
         } else {
             c.style.border = "1px solid black"
         }
+        console.log(c)
     } 
 
     if (checarValidade(RFIput) === false) {
@@ -293,6 +361,8 @@ submitButton.addEventListener("click", function (event) {
     if (camposInvalidos === 0) {
         RFIput.style.border = "1px solid black"
         document.querySelector('.etapa3 p').style.display = 'none'
+        // enviaFormAutomate()
+        // enviaFormPipz()
         enviaForm()
     }
 }) 
